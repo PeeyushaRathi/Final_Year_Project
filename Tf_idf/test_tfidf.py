@@ -4,9 +4,11 @@ import os
 import PyPDF2 
 import textract
 import numpy as np
+import pandas as ps
+
+from pandas import *
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.stem.porter import PorterStemmer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -53,9 +55,8 @@ for subdir, dirs, files in os.walk(".", topdown=False):
             token_dict[file] = keywords
         
 tfidf = TfidfVectorizer(tokenizer=tokenize, stop_words='english')
-tfs = tfidf.fit_transform(token_dict)    
-
-print (tfs)
+tfs = tfidf.fit_transform(token_dict)
+print (tfs.toarray())
 print ('\n')
 print ('\n')
 print ('\n')
