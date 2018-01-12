@@ -52,7 +52,7 @@ if __name__ == '__main__':
     corpus = build_corpus_from_dir('.')
     #corpus=["Hi how are you, what you doingg?", "Hey what's up bro? you are cool","Hi what are you up to? Such a cool day"]
     
-    vectorizer = TfidfVectorizer(tokenizer = tokenize, stop_words = 'english', max_features = 100)
+    vectorizer = TfidfVectorizer(tokenizer = tokenize, stop_words = 'english', max_features = 250, min_df = 5, max_df = 0.5)
     train_cv = vectorizer.fit_transform(corpus)
     
     a = train_cv.toarray()
@@ -75,6 +75,18 @@ if __name__ == '__main__':
     centroids = km.cluster_centers_
     labels = km.labels_
 
+    print("\nTop terms per cluster:\n")
+    order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+    terms = vectorizer.get_feature_names()
+    for i in range(num_clusters):
+        print("Cluster %d:" % i),
+        cluster_features = []
+        for ind in order_centroids[i, :20]:
+            #print(' %s' % terms[ind]),
+            cluster_features.append(terms[ind]),
+        print('\n',cluster_features,'\n')    
+        print()
+
     colors = ["g.","r.","c.","b.","y."]
 
     for i in range(len(a)):
@@ -82,7 +94,7 @@ if __name__ == '__main__':
         plt.plot(a[i])
 
     plt.scatter(centroids[:,0], centroids[:,1], marker="x", s=150, linewidths = 5, zorder = 10)
-    plt.show()
+    #plt.show()
     
     #print ('\nCentroids:\n',centroids,'\n\n\n')
     #print ('\nLabels:\n',labels,'\n\n\n')
