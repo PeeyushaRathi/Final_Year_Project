@@ -52,7 +52,7 @@ if __name__ == '__main__':
     corpus = build_corpus_from_dir('.')
     #corpus=["Hi how are you, what you doingg?", "Hey what's up bro? you are cool","Hi what are you up to? Such a cool day"]
     
-    vectorizer = TfidfVectorizer(tokenizer = tokenize, stop_words = 'english', max_features = 250)
+    vectorizer = TfidfVectorizer(tokenizer = tokenize, stop_words = 'english', max_features = 100)
     train_cv = vectorizer.fit_transform(corpus)
     
     a = train_cv.toarray()
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     
     #dist = 1 - cosine_similarity(a)
 
-    num_clusters = 7
+    num_clusters = 4
 
     km = KMeans(n_clusters = num_clusters)
 
