@@ -87,7 +87,7 @@ if __name__ == '__main__':
         print('\n',cluster_features,'\n')    
         print()
 
-    colors = ["g.","r.","c.","b.","y."]
+    #colors = ["g.","r.","c.","b.","y."]
 
     for i in range(len(a)):
         #print("\ncoordinate: ", a[i], "      label: ", labels[i])
