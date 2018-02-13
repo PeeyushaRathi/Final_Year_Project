@@ -1,10 +1,5 @@
 import re
-from linecache import getline
-from subprocess import call
-import glob
 import os
-import string 
-import sys
 for root, dirs, filenames in os.walk('.',topdown=False):
         for name in filenames:
             if(name.endswith('txt')):
