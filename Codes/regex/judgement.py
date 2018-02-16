@@ -1,7 +1,6 @@
 import os
 import re
 
-
 for root, dirs, filenames in os.walk('.',topdown=False):
     for name in filenames:
         if(name.endswith('txt')):
@@ -15,40 +14,6 @@ for root, dirs, filenames in os.walk('.',topdown=False):
             print(file_name)
             f = (open(file_name, 'r'))
             content = f.read()
-<<<<<<< HEAD
-            length = len(content)-1400
-            start = ['appeal', 'application', 'petition','revision','appellant', 'accused']
-            regexs = ['partly allow','partially allow','allowed partly', 'partly',
-                      'allow','condon',
-                      'dismiss','disposed of', 'reject', 'quash']
-            
-            for r in start:
-                m = re.search(r,content[length:], re.I)
-                if m:
-                    start_index = m.start(0)
-                    doc = m.group().lower()
-                    #print(start_index)
-                    #print(m.group())
-                    break
-
-            for r in regexs:
-                m = re.search(r,content[length:], re.I)
-                if m:
-                    end_index = m.start(0)
-                    print(start_index)
-                    print(doc)
-                    print(end_index)
-                    print(m.group())
-                    judgement = m.group().lower()
-                    break
-                            
-                    
-            if judgement and doc:
-                i = regexs.index(judgement)
-                j = start.index(doc)
-                if j>3:
-                    doc = 'Appeal'
-=======
             length = len(content)-2000
             start_appeal = ['appeal', 'application', 'petition','revision','appellant','accused']
             
@@ -74,7 +39,6 @@ for root, dirs, filenames in os.walk('.',topdown=False):
             flag = 0        
             if judgement and doc:
                 i = end_result.index(judgement)
->>>>>>> Peeyusha
                 if i<=3:
                     print(doc+" is partly allowed")
                 elif 3<i<6:
@@ -82,9 +46,6 @@ for root, dirs, filenames in os.walk('.',topdown=False):
                 else:
                     print(doc+" is dismissed")                  
             else:
-<<<<<<< HEAD
-                print("Not available")       
-=======
                 for s in start_appellant:
                     m = re.search(s,content[length:],re.I|re.DOTALL)
                     if m:
@@ -99,7 +60,6 @@ for root, dirs, filenames in os.walk('.',topdown=False):
     
                 if flag == 0:
                     print("Not available")
->>>>>>> Peeyusha
                      
                 
                 

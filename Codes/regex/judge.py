@@ -20,6 +20,6 @@ for root, dirs, filenames in os.walk('.',topdown=False):
                 for r in regexs:
                     m = re.search(r,content[:3000],re.IGNORECASE)
                     if m:
-                        print (m.group())
+                        print (m.group().strip())
                         break
                 

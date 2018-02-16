@@ -6,7 +6,6 @@ import glob
 import os
 import string 
 import sys
-print('advocates')
 for root, dirs, filenames in os.walk('.',topdown=False):
         for name in filenames:
             if(name.endswith('txt')):
@@ -75,16 +74,3 @@ for root, dirs, filenames in os.walk('.',topdown=False):
                     if m:
                         print (m.group().strip())
                         flag =1
-
-
-
-
-'''
-for regex in regex_lines:
-    for line in lines:
-        n = re.findall(regex, line, re.MULTILINE|re.IGNORECASE)
-
-        r'for the appellant (.*?\n){2}',
-        r'for appellant(.*?\n){2}',r'for petitioner(.*?\n){2}'
-
-'''
